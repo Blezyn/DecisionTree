@@ -79,7 +79,7 @@ public class IrisTest {
      * @return A Feature.Generator for Feature the given tab represents.
      */
     private static <T extends Comparable<T>> Feature.@NotNull Generator<T>
-            getGenerator(@NotNull String tab) {
+    getGenerator(@NotNull String tab) {
         int type;
         String[] tokens;
 
@@ -235,16 +235,16 @@ public class IrisTest {
      * even a single Record, while a value of 1.0 means that all the Record's'
      * were correctly classified.
      */
-     private static double successRate(@NotNull DecisionTree<String> dt,@NotNull Collection<Record<String>> records) {
-	 int sum = records.size();
-	 int success=0;
-	 String t;
-	 for (Record<String> e:records ){
-	     t= dt.predict(e);
-	     String target= e.getTarget();
-	     if (target.equals(t)){success ++;}
-	 }
-	 return  (double) success / sum;
+    private static double successRate(@NotNull DecisionTree<String> dt,@NotNull Collection<Record<String>> records) {
+        int sum = records.size();
+        int success=0;
+        String t;
+        for (Record<String> e:records ){
+            t= dt.predict(e);
+            String target= e.getTarget();
+            if (target.equals(t)){success ++;}
+        }
+        return  (double) success / sum;
     }
 
     /**

@@ -18,9 +18,9 @@ public class FlowTest {
         final String SALARY = "salary";
         final String SEX = "sex";
 
-        Feature<Integer> f1 = new Feature<>(AGE, 30, Feature.Type.CONTINUOUS);
-        Feature<Integer> f2 = new Feature<>(SALARY, 50_816, Feature.Type.CONTINUOUS);
-        Feature<String> f3 = new Feature<>(SEX, "female", Feature.Type.DISCRETE);
+        Feature<Integer> f1 = new Feature<>(AGE, 28, Feature.Type.CONTINUOUS);
+        Feature<Integer> f2 = new Feature<>(SALARY, 165_000, Feature.Type.CONTINUOUS);
+        Feature<String> f3 = new Feature<>(SEX, "male", Feature.Type.DISCRETE);
         Record<String> r1 = new Record<>(Arrays.asList(f1, f2, f3), null);
 
         System.out.println("result: " + dt.predict(r1));
