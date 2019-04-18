@@ -1,5 +1,7 @@
 import org.jetbrains.annotations.NotNull;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -49,6 +51,12 @@ public class IrisTest {
                 IrisTest.constructRecords(header, evalStrRecords);
         //Prints the success prediction rate of DecisionTree dt
         System.out.println(IrisTest.successRate(dt, evalRecords));
+
+        /* If a second argument is given, the output file with all the targets
+         * is extracted.
+         */
+        if (args.length >= 2)
+            saveFile(args[1], evalRecords);
     }
 
     /**
@@ -327,6 +335,31 @@ public class IrisTest {
         }//end for
 
         return records;
+    }
+
+    /**
+     * Saves all the targets to the output file.
+     * @param path The path of the output file.
+     * @param records A collection with all the records
+     */
+    private static void saveFile(String path, Collection<Record<String>> records) {
+        try {
+            // Create a new file
+            BufferedWriter writer = new BufferedWriter(new FileWriter(path));
+            try {
+                // Write the target of each record in the each line of output file
+                for (Record<String> record : records) {
+                    writer.write(record.getTarget() + "\n");
+                }
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+            writer.close();
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }//end class IrisTest
